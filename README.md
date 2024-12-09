@@ -1,30 +1,17 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="./assets/bunest-icon.svg" width="500" alt="Nest Logo" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+  <p align="center">An <a href="https://bun.sh/">Bun</a> integration for <a href="https://nestjs.com/">Nest</a>, made with Bun, for Bun runtime</p>
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The starter template for <a href="https://bun.sh/">Nest</a> with Bun runtime. This template utilizes the perks of Bun runtime & API to provide a seamless & performant development experience without taking away the familiarity of Nest & Node.js.
+
+> ⚠️ **Warning**:
+>
+> - This template is still in development and may not be suitable for production use. Please report any issues you encounter.
+> - **Do NOT** use [Nest CLI](https://www.npmjs.com/package/@nestjs/cli) with this template. A Nest-like, dedicated CLI tool for this template is currently in development.
 
 ## Project setup
 
@@ -32,7 +19,9 @@
 $ bun install
 ```
 
-## Compile and run the project
+## ~~Compile &~~ run the project
+
+Bun can run TypeScript code directly, so there is no need to transpile the project before running it. At the same time, however, Bun **will NOT** perform any type-checking during development. Hence, [`tsc-watch`](https://www.npmjs.com/package/tsc-watch) & `tsc` is added to start scripts by default. Feel free to remove it if you want.
 
 ```bash
 # development
@@ -45,7 +34,25 @@ $ bun run start:dev
 $ bun run start:prod
 ```
 
+## Build the project
+
+This template leverages a custom build script, located in [`scripts/build.ts`](./scripts/build.ts), using [Bun Build API](https://bun.sh/docs/bundler) to build the project. Feel free to modify the script to suit your needs.
+
+```bash
+$ bun run build # ⚠️ Be careful not to confuse this command with `bun build`.
+```
+
+The build output will be located in the `dist` folder, containing JS files. Unlike the default Nest template, the JS code inside the `dist` folder includes bundled dependencies, thanks to Bun. The result is that the server starts almost twice as fast as the default Nest template & the `bun run start:dev` script. You can run the built output directly with Bun using the following command:
+
+```bash
+$ bun run dist/main.js
+```
+
+However, using the [`bun run start:prod`](./package.json) command is recommended, due to the `NODE_ENV` environment variable will be set to `production`.
+
 ## Run tests
+
+Bun is also a test runner and provides a Jest-like API for running tests. Hence, `jest` is not included in this template. You can run tests using the following commands:
 
 ```bash
 # unit tests
@@ -58,29 +65,65 @@ $ bun run test:e2e
 $ bun run test:cov
 ```
 
-## Resources
+## Frameworks/Libraries guides
 
-Check out a few resources that may come in handy when working with NestJS:
+### 1. [TypeORM](https://typeorm.io/)
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+TypeORM can be used seamlessly with this template, just like any other Nest projects. However, by default, TypeORM CLI uses Node runtime, which requires you to install `ts-node` to execute TypeScript files. Therefore, using TypeORM CLI with Bun runtime is recommended, which can be achieved by passing the `--bun` flag like this:
+
+```bash
+# With bunx
+$ bunx --bun typeorm <typeorm-command>
+
+# Or with `bun run`, only if you have TypeORM installed as a dependency
+$ bun run --bun typeorm <typeorm-command>
+```
+
+If you wish to transpile TypeORM's migrations to JS in order to use them in production, you can modify the build script (`scripts/build.ts`) to include the migration files:
+
+1. Retrieve all the names of migration files, in this case, from the `src/database/migrations` folder, using [Bun Glob API](https://bun.sh/docs/api/glob).
+
+```typescript
+const migrationFileNames = Array.from(
+  new Glob('./src/database/migrations/*.ts').scanSync(),
+).map((name) => name.replaceAll(/\\/g, '/'));
+```
+
+2. In the `Bun.build` function, add the migration files to the `entrypoints` array, and you are good to go:
+
+```typescript
+const result = await build({
+  entrypoints: ['./src/main.ts', ...migrationFileNames],
+  // ...
+```
+
+> ⚠️ **Warning**: While the entrypoint of the application is `main.ts` placed at `src/` folder, if the migrations are **NOT** placed in the `src/` folder, the build output `main.js` file will be **placed at `dist/src/`, not `dist/`**. You can test it out by yourself.
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Support Nest [here](https://docs.nestjs.com/support).
+- Contribute to Bun [here](https://bun.sh/docs/project/contributing).
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Nest:
+
+  - Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+  - Website - [https://nestjs.com](https://nestjs.com/)
+  - Twitter - [@nestframework](https://twitter.com/nestframework)
+
+- Bun:
+
+  - Author - [oven-sh](https://github.com/oven-sh)
+  - Website - [https://bun.sh](https://bun.sh/)
+  - Twitter - [@bunjavascript](https://x.com/bunjavascript)
+
+- Me, the author of this template:
+  - GitHub - [@dung204](https://github.com/dung204)
+  - Twiter - [@mantrilogix](https://x.com/mantrilogix)
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- Bun is [MIT licensed](https://github.com/oven-sh/bun/blob/main/LICENSE.md)
+- This template is also [MIT licensed](./LICENSE).

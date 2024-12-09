@@ -1,33 +1,36 @@
-(async () => {
-  const optionalRequirePackages = [
-    'class-transformer',
-    'class-validator',
-    '@nestjs/microservices',
-    '@nestjs/websockets',
-  ];
+import { Glob, build, $ } from 'bun';
 
-  const result = await Bun.build({
-    entrypoints: ['./src/main.ts'],
-    outdir: './dist',
-    target: 'bun',
-    minify: {
-      syntax: true,
-      whitespace: true,
-    },
-    external: optionalRequirePackages.filter((pkg) => {
-      try {
-        require(pkg);
-        return false;
-      } catch (_) {
-        return true;
-      }
-    }),
-  });
+await $`rm -rf dist`;
 
-  if (!result.success) {
-    console.log(result.logs[0]);
-    process.exit(1);
-  }
+const optionalRequirePackages = [
+  'class-transformer',
+  'class-validator',
+  '@nestjs/microservices',
+  '@nestjs/websockets',
+];
 
-  console.log('Built successfully!');
-})();
+const result = await build({
+  entrypoints: ['./src/main.ts'],
+  outdir: './dist',
+  target: 'bun',
+  minify: {
+    syntax: true,
+    whitespace: true,
+  },
+  external: optionalRequirePackages.filter((pkg) => {
+    try {
+      require(pkg);
+      return false;
+    } catch (_) {
+      return true;
+    }
+  }),
+  splitting: true,
+});
+
+if (!result.success) {
+  console.log(result.logs[0]);
+  process.exit(1);
+}
+
+console.log('Built successfully!');
