@@ -1,4 +1,4 @@
-import { Glob, build, $ } from 'bun';
+import { build, $ } from 'bun';
 
 await $`rm -rf dist`;
 
@@ -7,6 +7,7 @@ const optionalRequirePackages = [
   'class-validator',
   '@nestjs/microservices',
   '@nestjs/websockets',
+  '@fastify/static',
 ];
 
 const result = await build({
