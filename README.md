@@ -2,7 +2,7 @@
   <img src="./assets/bunest-icon.svg" width="500" alt="Nest Logo" />
 </p>
 
-  <p align="center">An <a href="https://bun.sh/">Bun</a> integration for <a href="https://nestjs.com/">Nest</a>, made with Bun, for Bun runtime</p>
+  <p align="center">A <a href="https://bun.sh/">Bun</a> integration for <a href="https://nestjs.com/">Nest</a>, made with Bun, for Bun runtime</p>
 
 ## Table of contents
 
@@ -131,7 +131,7 @@ const result = await build({
 
 ### 2. [Serving static files (`@nestjs/serve-static`)](https://docs.nestjs.com/recipes/serve-static)
 
-To serve static files in production, you must modify the build script to include the static files in the build output. There are two methods to achieve this:
+To serve static files in production, you must modify the build script to include them in the build output. There are two methods to achieve this:
 
 #### Method 1. Specify the path to the static files in the `entrypoints` array:
 
