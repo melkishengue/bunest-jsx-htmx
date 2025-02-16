@@ -2,7 +2,7 @@
   <img src="./assets/bunest-icon.svg" width="500" alt="Nest Logo" />
 </p>
 
-  <p align="center">A <a href="https://bun.sh/">Bun</a> integration for <a href="https://nestjs.com/">Nest</a>, made with Bun, for Bun runtime</p>
+  <p align="center">A <a href="https://bun.sh/">Bun</a> integration for <a href="https://nestjs.com/">Nest</a>, <a href="https://legacy.reactjs.org/docs/introducing-jsx.html">jsx</a> (html rendering) and <a href="https://htmx.org/">htmx</a> on the frontend.</p>
 
 ## Table of contents
 
